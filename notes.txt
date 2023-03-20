@@ -842,3 +842,129 @@ class Addressentity
 	
 
 joincolumn jya lakhyu hoy te table ma foreign key banse
+
+
+
+
+
+
+-----------------------------------------------------------------------
+Many to many
+
+3rd table ==>Bridge table
+
+
+Emp 								Address
+
+empid	name				addid 			line 		city
+1		A						11			x			x
+2		B						12			Y			Y
+3		C						13			z			z
+
+
+
+i said x ka address A user ka hai!!!
+
+what you do!?
+
+
+Emp 								Address
+
+empid	name	addid			addid 		line 		city
+1		A		11				11			x			x
+2		B		13				12			Y			Y
+3		C		12				13			z			z
+
+this is onetoone relationship
+-----------------------------------
+
+now In manytomany relationship
+
+project
+
+projectid	   name  
+1				A	
+2				B
+3				C	
+
+
+Developer
+
+DeveloperId		Name		
+1				X
+2				Y
+3				Z
+
+x->AC
+Y->AC
+Z->ABC
+
+project
+
+projectid	   name     devloperId	
+1				A			1,2,3      //comma is not store in sql
+2				B			3
+3				C			1,2,3
+
+
+Developer
+	
+DeveloperId		Name		projectid	
+1				X				1    ,2
+2				Y
+3				Z
+1				X				2
+
+so, the conclusion is , 
+it is not possible to give foreign key to another table
+
+MANYTOMANY  
+
+You have to make bridge table
+
+x no entry y ma lakhva mate and y ni entry x ma lakhva mate!!
+
+
+xy table
+or
+
+x->AC
+Y->AC
+Z->ABC
+
+
+projectDeveloper table
+
+FK					FK			fk can be duplicate.
+projectId		developerId
+1					1
+1					2
+1					3
+2					3
+3					1
+3					2
+3					3
+
+1 developer has many projects
+1 project has many developer
+
+
+
+Interview question :-----> 
+
+when we need to use bridge table?
+when we have manytomany relationship that time bridge table is used.
+
+@ManyToMany
+	@JoinColumn(table = "developer_project",@JoinColumn="developerId")
+	Set<ProjectEntity> projects;
+
+
+
+
+
+
+
+
+
+

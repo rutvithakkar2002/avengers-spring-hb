@@ -47,7 +47,7 @@ public class OneToOneController {
 		if (empEntity == null) {
 			return "LoginEmp";
 		} else {
-			session.setAttribute("emp", empEntity);
+			session.setAttribute("emp", empEntity);// id name
 			return "Home";
 		}
 	}
@@ -55,12 +55,12 @@ public class OneToOneController {
 	@PostMapping("/saveaddress")
 	public String saveAddress(AddressEntity address, HttpSession sesssion) {
 		EmployeeEntity empEntity = (EmployeeEntity) sesssion.getAttribute("emp");
-		addrepo.save(address);
+		addrepo.save(address);//address save 
 		// addressId
 		// emp-> address
 		empEntity.setAddress(address);
-
-		emprepo.save(empEntity);
+		
+		emprepo.save(empEntity);//update addressId set 
 		return "Home";
 	}
 
