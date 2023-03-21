@@ -25,7 +25,12 @@
 				<td>${d.developerId}</td>
 				<td>${d.developerName}</td>
 				<td><a href="deletedeveloper/${d.developerId}">Delete</a>| <a
-					href="editdeveloper/${d.developerId}">Edit</a></td>
+					href="editdeveloper/${d.developerId}">Edit</a>${d.project.size()}|
+					
+					<a href="/devprojects/${d.developerId}">View</a></td>
+
+					
+					
 
 			</tr>
 		</c:forEach>

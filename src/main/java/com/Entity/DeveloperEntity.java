@@ -24,7 +24,8 @@ public class DeveloperEntity {
 	@ManyToMany(cascade = { CascadeType.ALL })
 	@JoinTable(name = "developerproject", joinColumns = { @JoinColumn(name = "developerId") }, inverseJoinColumns = {
 			@JoinColumn(name = "projectId") })
-
+		//pass in json format
+		
 	Set<ProjectEntity> project;
 
 	public Integer getDeveloperId() {

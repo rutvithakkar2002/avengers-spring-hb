@@ -16,9 +16,9 @@
 
 	<th>DeveloperProjectId</th>
 	<th>DeveloperId</th>
-	<th>DeveloperName</th>
+	
 	<th>ProjectId</th>
-	<th>ProjectName</th>
+	
 	<th>Action</th>
 
 </tr>
@@ -27,12 +27,13 @@
 		<tr>
 			<td>${dp.devproId }</td>
 			<td>${dp.developerId}</td>
-			<td>${dp.developername}</td>
+			
 			<td>${dp.projectId}</td>
-			<td>${dp.projectName}</td>
-		 
+			
 			<td><a href="/deleteDeveloperPro/${dp.devproId}">Delete</a>|
-			<a href="/UpdateDeveloperPro/${dp.devproId}">Edit</a></td>
+			<a href="/UpdateDeveloperPro/${dp.devproId}">Edit</a>|
+				
+			
 		</tr>
 		</c:forEach>
 

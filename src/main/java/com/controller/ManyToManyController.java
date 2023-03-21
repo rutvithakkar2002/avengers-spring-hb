@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.persistence.criteria.CriteriaBuilder.In;
 
+import org.hibernate.annotations.ManyToAny;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +33,8 @@ public class ManyToManyController {
 
 	@Autowired
 	DeveloperProjectRepository devprorepo;
-
+//-------------------------------------------------- Developer crud ------------------------------------------------------------
+	
 	@GetMapping("/newDeveloper")
 	public String newDeveloper() {
 		return "NewDeveloper";
@@ -74,7 +76,7 @@ public class ManyToManyController {
 		devrepo.save(developer);
 		return "redirect:/developers";
 	}
-
+	//------------------------------------------------------ Project crud ---------------------------------------------
 	// saveproject
 
 	@GetMapping("/newproject")
@@ -119,6 +121,7 @@ public class ManyToManyController {
 		return "redirect:/projects";
 	}
 
+//---------------------------------------------- Developer Project Join -----------------------------------------
 	// many to many
 
 	@GetMapping("/addDevPro")
@@ -160,4 +163,25 @@ public class ManyToManyController {
 		devprorepo.deleteById(devproId);
 		return "redirect:/developerpros";
 	}
+	
+	
+	
+//	----------------------------------- get projects by developer -------------------------------------
+	
+	@GetMapping("/devprojects/{developerId}")   
+	public String GetAlldevProjects(@PathVariable("developerId")  Integer developerId,Model model) {
+		Optional<DeveloperEntity> developerpros = devrepo.findById(developerId); 
+		model.addAttribute("developers", developerpros.get());
+		return "ListMyProject";
+	} 
+	
+	//--------------------------------- get developer by project -------------------------------------
+	@GetMapping("/viewDev/{projectId}")   
+	public String GetAlldevlopers(@PathVariable("projectId")  Integer projectId,Model model) {
+		Optional<ProjectEntity> developerpros = prorepo.findById(projectId); 
+		model.addAttribute("project", developerpros.get());
+		return "ListMyDevlopers";
+	}
+	
+	
 }

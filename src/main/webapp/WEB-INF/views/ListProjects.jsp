@@ -27,7 +27,8 @@
 			<td>${p.projectname}</td>
 			<td>${p.technologyname}</td>
 			<td><a href="deleteproject/${p.projectId}">Delete</a>|
-			<a href="editproject/${p.projectId}">Edit</a></td>
+			<a href="editproject/${p.projectId}">Edit</a>|
+					<a href="viewDev/${p.projectId}">View</a></td>
 			
 			
 		</tr>

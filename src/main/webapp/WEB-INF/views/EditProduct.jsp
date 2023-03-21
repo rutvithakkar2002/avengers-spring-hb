@@ -18,7 +18,7 @@
 
 	<!-- jsp contain same name as entity class var -->
 	<form action="../updateproduct" method="post" autocomplete="off">
-
+		<input type="hidden" name="productId" value="${product1.productId}">
 		Name:<input type="text" name="name" value="${product1.name}"><br>
 		<br> Price:<input type="text" name="price"
 			value="${product1.price}"><br> <br> Quantity:<input

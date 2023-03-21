@@ -962,6 +962,35 @@ when we have manytomany relationship that time bridge table is used.
 
 
 
+---Developer--- 
+ @ManyToMany
+ @JoinTable(
+        name = "developers_projects",
+        joinColumns = {
+            @JoinColumn(name = "developer_id")
+        },
+        inverseJoinColumns = {
+            @JoinColumn(name = "project_id")
+        }
+    )
+    
+    
+    
+    ---porject--
+   @ManyToMany(mappedBy = "projects")
+    private Set<Employee> employees = new HashSet<Employee>();
+
+--------------------------------------------------------------------------------------------------
+
+
+*****one to many relationship*****
+====================================
+
+1 role many users
+
+
+
+
 
 
 

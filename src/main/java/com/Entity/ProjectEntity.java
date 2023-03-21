@@ -21,7 +21,7 @@ public class ProjectEntity {
 
 	// @JoinColumn(table = "developer_project",@JoinColumn="projectId") //table=""
 	// that is 3rd table name
-	@ManyToMany(mappedBy = "project")
+	@ManyToMany(mappedBy = "project")  //redunduncy
 	Set<DeveloperEntity> developers;
 
 	public Integer getProjectId() {
