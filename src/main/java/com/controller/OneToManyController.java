@@ -1,11 +1,13 @@
 package com.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.Entity.HumanEntity;
@@ -57,7 +59,7 @@ public class OneToManyController {
 	{
 	
 		humanrepo.save(human);
-		return "humans";
+		return "redirect:/humans";
 		
 	}
 	
@@ -67,6 +69,35 @@ public class OneToManyController {
 		model.addAttribute("humans", humans);
 		return "ListHumans";
 	}
+		
+	@GetMapping("/deletehuman")
+	public String deleteHuman(@PathVariable("humanId") Integer humanId)
+	{	
+		humanrepo.deleteById(humanId);
+		return "redirect:/humans";
+	
+	}
+	
+
+	@GetMapping("/updatehuman/{humanId}")
+	public String UpdateUser(@PathVariable("humanId")  Integer humanId,Model model) {
+		Optional<HumanEntity> human =humanrepo.findById(humanId);
+		HumanEntity he = null;
+		if(human.isPresent()) {
+			he = human.get();
+		} 
+		System.out.println(he.getRole());
+		model.addAttribute("human",he);
+//		System.out.println(pe.getProductName());
+		return "UpdateUser"; 
+	}
+	@PostMapping("/updateUser") 
+	public String updateUser(HumanEntity human) {
+		 
+		humanrepo.save(human);  
+		return "redirect:/humans"; 
+	} 
+	
 	
 	
 	
